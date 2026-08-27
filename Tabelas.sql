@@ -1,88 +1,29 @@
--- RF-01, RF-03: login separado admin/aluno, recuperação de senha, admin cria/edita/desativa contas
-CREATE TABLE usuarios (
-id SERIAL PRIMARY KEY,
-nome VARCHAR(150) NOT NULL,
-email VARCHAR(150) UNIQUE NOT NULL,
-senha_hash VARCHAR(255) NOT NULL,
-tipo VARCHAR(20) NOT NULL CHECK (tipo IN ('admin', 'mentor', 'aluno')),
-ativo BOOLEAN NOT NULL DEFAULT TRUE,
-token_reset_senha VARCHAR(255),
-token_reset_expira TIMESTAMP,
-criado_em TIMESTAMP NOT NULL DEFAULT NOW()
-);
+-- InfoHub → InovAMF
+-- Arquivo de conveniência para psql. A fonte versionada está em database/migrations/.
+-- O modelo inicial da equipe permanece preservado em database/legacy/Tabelas_original.sql.
 
--- RF-02, RF-05: formulário inicial cria a conta do líder + registra a ideia na Etapa 1
-CREATE TABLE equipes (
-id SERIAL PRIMARY KEY,
-lider_id INTEGER NOT NULL REFERENCES usuarios(id),
-nome_projeto VARCHAR(150) NOT NULL,
-descricao_inicial TEXT NOT NULL,
-area_setor VARCHAR(100) NOT NULL,
-estagio_atual VARCHAR(30) NOT NULL CHECK (estagio_atual IN ('ideia','prototipo','mvp_desenvolvimento','mvp_pronto')),
-origem_divulgacao VARCHAR(100),
-etapa_atual SMALLINT NOT NULL DEFAULT 1 CHECK (etapa_atual BETWEEN 1 AND 6),
-status VARCHAR(30) NOT NULL DEFAULT 'ativa' CHECK (status IN ('ativa','pronta_inovamf','encaminhada_inovamf','inativa')),
-mentor_id INTEGER REFERENCES usuarios(id),
-criado_em TIMESTAMP NOT NULL DEFAULT NOW()
-);
+\set ON_ERROR_STOP on
 
--- Formulário inicial: "nome e curso de cada colega de equipe" (campo repetível)
-CREATE TABLE integrantes_equipe (
-id SERIAL PRIMARY KEY,
-equipe_id INTEGER NOT NULL REFERENCES equipes(id) ON DELETE CASCADE,
-nome VARCHAR(150) NOT NULL,
-curso VARCHAR(100) NOT NULL,
-semestre VARCHAR(20)
-);
+\ir database/migrations/V001__extensoes.sql
+\ir database/migrations/V002__usuarios.sql
+\ir database/migrations/V003__perfis_aluno.sql
+\ir database/migrations/V004__ciclos_programa.sql
+\ir database/migrations/V005__etapas_jornada.sql
+\ir database/migrations/V006__areas_projeto.sql
+\ir database/migrations/V007__equipes.sql
+\ir database/migrations/V008__integrantes_equipe.sql
+\ir database/migrations/V009__projetos.sql
+\ir database/migrations/V010__modelos_tarefa.sql
+\ir database/migrations/V011__tarefas.sql
+\ir database/migrations/V012__entregas.sql
+\ir database/migrations/V013__arquivos_entrega.sql
+\ir database/migrations/V014__anotacoes_mentor.sql
+\ir database/migrations/V015__historico_etapas.sql
+\ir database/migrations/V016__lembretes_tarefa.sql
+\ir database/migrations/V017__notificacoes.sql
+\ir database/migrations/V018__auditoria.sql
+\ir database/migrations/V019__indices.sql
 
--- RF-09: histórico de avanço/retrocesso manual de etapa
-CREATE TABLE historico_etapas (
-id SERIAL PRIMARY KEY,
-equipe_id INTEGER NOT NULL REFERENCES equipes(id) ON DELETE CASCADE,
-etapa_anterior SMALLINT NOT NULL,
-etapa_nova SMALLINT NOT NULL,
-alterado_por INTEGER NOT NULL REFERENCES usuarios(id),
-motivo TEXT,
-alterado_em TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
--- RF-10: anotações internas do mentor, não visíveis ao aluno
-CREATE TABLE anotacoes (
-id SERIAL PRIMARY KEY,
-equipe_id INTEGER NOT NULL REFERENCES equipes(id) ON DELETE CASCADE,
-autor_id INTEGER NOT NULL REFERENCES usuarios(id),
-texto TEXT NOT NULL,
-criado_em TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
--- RF-11: modelos de tarefa pré-configurados por etapa (reutilizáveis entre equipes)
-CREATE TABLE modelos_tarefa (
-id SERIAL PRIMARY KEY,
-titulo VARCHAR(150) NOT NULL,
-descricao TEXT,
-etapa_relacionada SMALLINT NOT NULL CHECK (etapa_relacionada BETWEEN 1 AND 6)
-);
-
--- RF-11, RF-12: tarefa atribuída a uma equipe, criada livre ou a partir de um modelo
-CREATE TABLE tarefas (
-id SERIAL PRIMARY KEY,
-equipe_id INTEGER NOT NULL REFERENCES equipes(id) ON DELETE CASCADE,
-modelo_tarefa_id INTEGER REFERENCES modelos_tarefa(id),
-titulo VARCHAR(150) NOT NULL,
-descricao TEXT,
-etapa_relacionada SMALLINT NOT NULL CHECK (etapa_relacionada BETWEEN 1 AND 6),
-data_entrega DATE NOT NULL,
-status VARCHAR(20) NOT NULL DEFAULT 'pendente'
-CHECK (status IN ('pendente','em_andamento','entregue','atrasada','aprovada','reprovada')),
-criado_por INTEGER NOT NULL REFERENCES usuarios(id),
-criado_em TIMESTAMP NOT NULL DEFAULT NOW()
-);
-
--- RF-14: aluno anexa arquivo(s) como entrega de uma tarefa
-CREATE TABLE entregas (
-id SERIAL PRIMARY KEY,
-tarefa_id INTEGER NOT NULL REFERENCES tarefas(id) ON DELETE CASCADE,
-enviado_por INTEGER NOT NULL REFERENCES usuarios(id),
-arquivo_url VARCHAR(255) NOT NULL,
-enviado_em TIMESTAMP NOT NULL DEFAULT NOW()
-);
+\ir database/seeds/01_etapas_jornada.sql
+\ir database/seeds/02_areas_projeto.sql
+\ir database/seeds/03_modelos_tarefa.sql
