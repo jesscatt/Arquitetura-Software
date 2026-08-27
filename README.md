@@ -45,7 +45,6 @@ As migrations e seeds são executadas automaticamente na primeira criação do v
 
 - `database/docs/database-model.md`: tabelas, decisões e diagrama ER;
 - `database/docs/api-contract.md`: formatos JSON usados pelos mocks e pela futura API;
-- `COMO_PUBLICAR_NO_GITHUB.md`: publicação pelo GitHub Desktop e GitHub Pages.
 
 ## Trabalho original preservado
 
