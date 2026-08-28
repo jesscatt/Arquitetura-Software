@@ -1,0 +1,5 @@
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/database");
+module.exports = sequelize.define("Usuario", {
+ id:{type:DataTypes.INTEGER,primaryKey:true,autoIncrement:true}, nome:{type:DataTypes.STRING(150),allowNull:false}, email:{type:DataTypes.STRING(150),allowNull:false,unique:true}, senhaHash:{type:DataTypes.STRING(255),allowNull:false,field:"senha_hash"}, tipo:{type:DataTypes.ENUM("admin","mentor","aluno","integrante"),allowNull:false}, perfilId:{type:DataTypes.INTEGER,field:"perfil_id"}, ativo:{type:DataTypes.BOOLEAN,allowNull:false,defaultValue:true}, tokenResetSenha:{type:DataTypes.STRING(255),field:"token_reset_senha"}, tokenResetExpira:{type:DataTypes.DATE,field:"token_reset_expira"}, deveAlterarSenha:{type:DataTypes.BOOLEAN,allowNull:false,defaultValue:false,field:"deve_alterar_senha"}, ultimoAcesso:{type:DataTypes.DATE,field:"ultimo_acesso"}, criadoEm:{type:DataTypes.DATE,field:"criado_em",defaultValue:DataTypes.NOW}
+},{tableName:"usuarios",timestamps:false});

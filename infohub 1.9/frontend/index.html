@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Protótipo do painel InfoHub para acompanhamento da jornada empreendedora até o InovAMF." />
+    <title>InfoHub — Jornada do Empreendedor</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+      <div class="login-panel">
+        <div class="login-card">
+          <div class="mobile-brand"><img src="./assets/logo.png" alt="InfoHub" /></div>
+          <p class="institution-name">FACULDADE ANTONIO MENEGHETTI</p>
+          <h2 id="loginTitle">Acesse sua conta</h2>
+
+          <form id="loginForm">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" value="admin@infohub.com" autocomplete="email" required />
+
+            <div class="label-row">
+              <label for="password">Senha</label>
+              
+            </div>
+            <input id="password" name="password" type="password" value="demo1234" autocomplete="current-password" required />
+
+            <button class="primary-button login-button" type="submit">
+              <span>Entrar</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <div class="app-shell is-hidden" id="appShell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <div class="sidebar-logo-wrap"><img class="sidebar-logo" src="./assets/logo.png" alt="InfoHub" /></div>
+        </div>
+
+        <nav aria-label="Navegação principal">
+          <p class="nav-label">GESTÃO</p>
+          <button class="nav-item active" type="button" data-section="dashboard"><span>01</span> Visão geral</button>
+          <button class="nav-item" type="button" data-section="teams"><span>02</span> Equipes <b id="teamNavCount">0</b></button>
+          <button class="nav-item" type="button" data-section="tasks"><span>03</span> Tarefas <b id="taskNavCount">0</b></button>
+          <p class="nav-label">ANÁLISE</p>
+          <button class="nav-item" type="button" data-section="reports"><span>04</span> Relatórios</button>
+          <button class="nav-item admin-only" type="button" data-section="settings"><span>05</span> Administração</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-avatar" id="userAvatar">AM</div>
+          <div><strong id="userName">Admin InfoHub</strong><span id="userRole">Administrador</span></div>
+          <button class="logout-button" type="button" id="logoutButton" aria-label="Sair">↗</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menu">☰</button>
+          <div>
+            <p id="todayLabel">Quarta-feira, 26 de agosto</p>
+            <h1 id="pageTitle">Visão geral da jornada</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="demo-badge"><i></i> Modo demonstração</span>
+            <button class="icon-button" type="button" id="notificationButton" aria-label="Notificações">3</button>
+          </div>
+        </header>
+
+        <section class="content-wrap">
+          <div id="dashboardContent">
+          <div class="hero-row">
+            <div>
+              <span class="eyebrow">CICLO 2026/2</span>
+              <h2>Acompanhe cada ideia até o InovAMF.</h2>
+              <p>Uma visão única das equipes, tarefas e próximos passos.</p>
+            </div>
+            <button class="primary-button" type="button" id="newTeamButton"><span>＋</span> Nova equipe</button>
+          </div>
+
+          <section class="stats-grid" id="statsGrid" aria-label="Indicadores gerais"></section>
+
+          <section class="board-section">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">PIPELINE</span>
+                <h2>Jornada das equipes</h2>
+              </div>
+              <div class="view-switch" aria-label="Visualização">
+                <button class="active" type="button" id="kanbanViewButton">Kanban</button>
+                <button type="button" id="listViewButton">Lista</button>
+              </div>
+            </div>
+
+            <form class="filters" id="filterForm">
+              <label class="search-field">
+                <span class="sr-only">Buscar equipe ou projeto</span>
+                <input id="searchInput" type="search" placeholder="Buscar equipe ou projeto…" />
+              </label>
+              <select id="areaFilter" aria-label="Filtrar por área"><option value="">Todas as áreas</option></select>
+              <select id="mentorFilter" aria-label="Filtrar por mentor"><option value="">Todos os mentores</option></select>
+              <button class="secondary-button" type="button" id="clearFilters">Limpar</button>
+            </form>
+
+            <div class="kanban" id="kanban" aria-live="polite"></div>
+          </section>
+
+          <section class="deadlines-section">
+            <div class="section-heading compact">
+              <div>
+                <span class="eyebrow">ATENÇÃO</span>
+                <h2>Próximos prazos</h2>
+              </div>
+              <button class="text-button" type="button" id="allTasksButton">Ver todas as tarefas →</button>
+            </div>
+            <div class="deadline-list" id="deadlineList"></div>
+          </section>
+          </div>
+          <section class="workspace-view is-hidden" id="workspaceView" aria-live="polite"></section>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="team-dialog" id="teamDialog">
+      <article id="teamDialogContent"></article>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
