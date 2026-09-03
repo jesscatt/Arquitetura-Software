@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Preguiça-gigante">
+<rect width="128" height="128" rx="64" fill="#fff4ea"/>
+<g fill="none" stroke="#4A0E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 65c8-17 22-27 40-29 13-2 25 3 31 13 5 9 2 19-6 25-9 7-25 9-40 5-10-2-19-7-25-14Z"/><path d="M58 38c-2-10 2-19 11-24 8-4 17-2 21 5 4 8-1 16-10 20"/><circle cx="84" cy="25" r="2.2"/><path d="M39 62 27 78M53 67l-4 16M76 67l6 14M91 61l12 10"/></g>
+<path d="M24 91c20-7 59-7 80 0" fill="none" stroke="#E63323" stroke-width="4" stroke-linecap="round"/>
+</svg>

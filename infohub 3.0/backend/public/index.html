@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Protótipo do painel InfoHub para acompanhamento da jornada empreendedora até o InovAMF." />
+    <title>InfoHub</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/icon-180.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+      <div class="login-visual">
+        <img class="login-image" src="./assets/imagem-login.png" alt="Estudantes e tecnologia em um ambiente de aprendizagem" />
+        <div class="education-glow glow-a"></div>
+        <div class="education-glow glow-b"></div>
+        <div class="education-grid"></div>
+
+        <div class="education-scene" aria-hidden="true">
+          <div class="floating-star star-a">✦</div>
+          <div class="floating-star star-b">✦</div>
+          <div class="education-orbit orbit-a"></div>
+          <div class="education-orbit orbit-b"></div>
+          <div class="book-stack">
+            <span class="book book-one"></span>
+            <span class="book book-two"></span>
+            <span class="book book-three"></span>
+          </div>
+          <div class="desk"></div>
+          <div class="laptop">
+            <div class="laptop-screen">
+              <span class="screen-node node-1"></span><span class="screen-node node-2"></span><span class="screen-node node-3"></span>
+              <i class="screen-line line-1"></i><i class="screen-line line-2"></i><i class="screen-line line-3"></i>
+              <b class="screen-cap">◆</b>
+            </div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="pencil pencil-one"></div><div class="pencil pencil-two"></div>
+          <div class="plant"><span class="leaf leaf-1"></span><span class="leaf leaf-2"></span><span class="leaf leaf-3"></span><i></i></div>
+          <div class="education-badge"><span>✦</span><strong>Aprender</strong><small>é criar possibilidades</small></div>
+        </div>
+
+        <div class="login-brand-lockup">
+          <img class="login-main-logo" src="./assets/logo-login.png" alt="InfoHub" />
+          <p>Conectando conhecimento, tecnologia &amp; inovação</p>
+        </div>
+      </div>
+
+      <div class="login-panel">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar para tema claro" aria-pressed="false">
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path></svg>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"></path></svg>
+        </button>
+        <div class="login-card">
+          <div class="mobile-brand"><img src="./assets/logo.png" alt="InfoHub" /></div>
+          <div class="login-welcome">
+            <h2 id="loginTitle">Bem-Vindo</h2>
+            <div class="welcome-divider"><span></span><b>Vamos Começar?</b><span></span></div>
+          </div>
+
+          <form id="loginForm">
+            <div class="login-form-title">Login</div>
+            <label for="email">E-mail</label>
+            <div class="input-shell"><span class="field-icon-wrap" aria-hidden="true"><svg class="field-icon" viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5v-11Z"></path><path d="m4 7 8 6 8-6"></path></svg></span><input id="email" name="email" type="email" value="" autocomplete="email" placeholder="Digite seu e-mail" required /></div>
+
+            <label for="password">Senha</label>
+            <div class="input-shell password-shell">
+              <span class="field-icon-wrap" aria-hidden="true"><svg class="field-icon" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2.4"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg></span>
+              <input id="password" name="password" type="password" value="" autocomplete="current-password" placeholder="Digite sua senha" required />
+              <button class="password-toggle" id="passwordToggle" type="button" aria-label="Mostrar senha" aria-pressed="false">
+                <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.2 12s3.3-5.2 9.8-5.2S21.8 12 21.8 12s-3.3 5.2-9.8 5.2S2.2 12 2.2 12Z"></path><circle cx="12" cy="12" r="2.7"></circle></svg>
+              </button>
+            </div>
+
+            <div class="login-options"><button class="forgot-password" id="forgotPasswordButton" type="button">Esqueceu a senha?</button></div>
+            <button class="primary-button login-button" type="submit"><span>Entrar</span><span aria-hidden="true">→</span></button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <div class="app-shell is-hidden" id="appShell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <div class="sidebar-logo-wrap"><img class="sidebar-logo" src="./assets/logo.png" alt="InfoHub" title="InfoHub" /></div>
+        </div>
+
+        <nav class="main-nav" aria-label="Navegação principal">
+          <button class="nav-item active" type="button" data-section="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span><strong>Visão geral</strong></button>
+          <button class="nav-item" type="button" data-section="tasks"><span class="nav-icon" aria-hidden="true">✓</span><strong>Tarefas</strong><b id="taskNavCount">0</b></button>
+          <button class="nav-item" type="button" data-section="teams"><span class="nav-icon" aria-hidden="true">◫</span><strong>Equipes</strong><b id="teamNavCount">0</b></button>
+          <div class="nav-section-label">ADMINISTRAÇÃO</div>
+          <button class="nav-item admin-only" type="button" data-section="users"><span class="nav-icon" aria-hidden="true">♙</span><strong>Usuários</strong></button>
+          <button class="nav-item admin-only" type="button" data-section="profiles"><span class="nav-icon" aria-hidden="true">◈</span><strong>Perfis e permissões</strong></button>
+          <button class="nav-item admin-only" type="button" data-section="reports"><span class="nav-icon" aria-hidden="true">▥</span><strong>Relatórios</strong></button>
+          <button class="nav-item admin-only" type="button" data-section="audit"><span class="nav-icon" aria-hidden="true">◷</span><strong>Logs de auditoria</strong></button>
+          <button class="nav-item admin-only" type="button" data-section="settings"><span class="nav-icon" aria-hidden="true">⚙</span><strong>Configurações</strong></button>
+        </nav>
+
+        <div class="sidebar-footer sidebar-tip-area">
+          <button class="sidebar-tip" type="button" id="sidebarTipButton" aria-label="Abrir dicas do InfoHub" title="Dicas do InfoHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M8.2 14.5C7.45 13.68 7 12.58 7 11.37a5 5 0 1 1 10 0c0 1.21-.45 2.31-1.2 3.13-.67.74-1.3 1.38-1.55 2.5h-4.5c-.25-1.12-.88-1.76-1.55-2.5Z"></path></svg>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menu">☰</button>
+          <div>
+            <p id="todayLabel">Quarta-feira, 26 de agosto</p>
+            <h1 id="pageTitle">Visão geral da jornada</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="app-notification-button" id="appNotificationButton" type="button" aria-label="Abrir notificações" title="Notificações">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"></path><path d="M10 21h4"></path></svg>
+              <span class="notification-dot" aria-hidden="true"></span>
+            </button>
+            <button class="app-theme-toggle" id="appThemeToggle" type="button" aria-label="Alternar tema" aria-pressed="false" title="Alternar tema">
+              <svg class="app-theme-icon app-theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path></svg>
+              <svg class="app-theme-icon app-theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"></path></svg>
+            </button>
+            <div class="user-menu" id="userMenu">
+              <button class="user-menu-trigger" id="userMenuTrigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Abrir menu do usuário">
+                <span class="mini-avatar" id="topAvatar">AM</span>
+                <span class="top-user-label"><strong id="topUserName">Admin InfoHub</strong><small id="topUserRole">Administrador</small></span>
+                <svg class="user-menu-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <div class="user-menu-dropdown is-hidden" id="userMenuDropdown" role="menu">
+                <div class="user-menu-head">
+                  <span class="mini-avatar" id="topAvatarBig">AM</span>
+                  <div><strong>Admin InfoHub</strong><small>Administrador</small></div>
+                </div>
+                <button class="user-menu-item" type="button" data-section="settings" id="menuSettingsButton" role="menuitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"></circle><path d="M19.4 13.5c.05-.5.05-1 0-1.5l1.9-1.5-2-3.4-2.3.6a7.6 7.6 0 0 0-1.3-.8l-.4-2.4h-4l-.4 2.4a7.6 7.6 0 0 0-1.3.8l-2.3-.6-2 3.4L6.6 12c-.05.5-.05 1 0 1.5l-1.9 1.5 2 3.4 2.3-.6c.4.3.85.6 1.3.8l.4 2.4h4l.4-2.4c.45-.2.9-.5 1.3-.8l2.3.6 2-3.4-1.9-1.5Z"></path></svg>
+                  Configurações
+                </button>
+                <button class="user-menu-item" type="button" id="menuProfileButton" role="menuitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path></svg>
+                  Meu perfil
+                </button>
+                <div class="user-menu-divider"></div>
+                <button class="user-menu-item danger" type="button" id="menuLogoutButton" role="menuitem">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5.5A1.5 1.5 0 0 1 4 19.5v-15A1.5 1.5 0 0 1 5.5 3H9"></path><path d="m15 16 4-4-4-4"></path><path d="M19 12H9"></path></svg>
+                  Sair
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section class="content-wrap">
+          <div id="dashboardContent">
+          <div class="hero-row">
+            <div>
+              <span class="eyebrow">CICLO 2026/2</span>
+              <h2>Acompanhe cada ideia até o InovAMF.</h2>
+              <p>Uma visão única das equipes, tarefas e próximos passos.</p>
+            </div>
+            <button class="primary-button" type="button" id="newTeamButton"><span>＋</span> Nova equipe</button>
+          </div>
+
+          <section class="stats-grid" id="statsGrid" aria-label="Indicadores gerais"></section>
+
+          <section class="board-section">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">PIPELINE</span>
+                <h2>Jornada das equipes</h2>
+              </div>
+              <div class="view-switch" aria-label="Visualização">
+                <button class="active" type="button" id="kanbanViewButton">Kanban</button>
+                <button type="button" id="listViewButton">Lista</button>
+              </div>
+            </div>
+
+            <form class="filters" id="filterForm">
+              <label class="search-field">
+                <span class="sr-only">Buscar equipe ou projeto</span>
+                <input id="searchInput" type="search" placeholder="Buscar equipe ou projeto…" />
+              </label>
+              <select id="areaFilter" aria-label="Filtrar por área"><option value="">Todas as áreas</option></select>
+              <select id="mentorFilter" aria-label="Filtrar por mentor"><option value="">Todos os mentores</option></select>
+              <button class="secondary-button" type="button" id="clearFilters">Limpar</button>
+            </form>
+
+            <div class="kanban" id="kanban" aria-live="polite"></div>
+          </section>
+
+          <section class="deadlines-section">
+            <div class="section-heading compact">
+              <div>
+                <span class="eyebrow">ATENÇÃO</span>
+                <h2>Próximos prazos</h2>
+              </div>
+              <button class="text-button" type="button" id="allTasksButton">Ver todas as tarefas →</button>
+            </div>
+            <div class="deadline-list" id="deadlineList"></div>
+          </section>
+          </div>
+          <section class="workspace-view is-hidden" id="workspaceView" aria-live="polite"></section>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="forgot-dialog" id="forgotPasswordDialog" aria-labelledby="forgotPasswordTitle">
+      <article class="forgot-card">
+        <button class="forgot-close" id="closeForgotPassword" type="button" aria-label="Fechar">×</button>
+        <div class="forgot-icon">↻</div>
+        <span class="eyebrow">RECUPERAÇÃO DE ACESSO</span>
+        <h2 id="forgotPasswordTitle">Recuperar minha senha</h2>
+        <p>Informe seu e-mail e enviaremos um link seguro para você criar uma nova senha. O link expira em 1 hora.</p>
+        <div class="forgot-email-preview"><span>✉</span><strong id="forgotEmailPreview">Digite seu e-mail no login</strong></div>
+        <div class="forgot-actions">
+          <button class="secondary-button" id="cancelForgotPassword" type="button">Cancelar</button>
+          <button class="primary-button" id="confirmForgotPassword" type="button">Enviar link de recuperação</button>
+        </div>
+      </article>
+    </dialog>
+
+    <dialog class="team-dialog" id="teamDialog">
+      <article id="teamDialogContent"></article>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script defer src="./js/app.js"></script>
+  </body>
+</html>
