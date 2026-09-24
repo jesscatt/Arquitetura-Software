@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InfoHub — Envio de ideia</title>
+    <meta name="description" content="Formulário de inscrição de ideias no InfoHub — Faculdade Antonio Meneghetti." />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
+    <style>
+      :root {
+        --navy: #171717;
+        --linha: #E8E8E8;
+        --muted: #6B6B6B;
+        --fundo: #f7f5f2;
+        --destaque: #ff2d1a;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--fundo); color: var(--navy); font-family: "Inter", "Segoe UI", Arial, sans-serif; font-size: 15px; line-height: 1.55; }
+      header.topo { padding: 22px 24px; background: #12121a; color: #fff; border-bottom: 3px solid var(--destaque); }
+      header.topo .conteudo { max-width: 940px; margin: 0 auto; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+      header.topo img { height: 34px; }
+      header.topo p { margin: 0; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .78; }
+      main { max-width: 940px; margin: 28px auto 60px; padding: 0 20px; }
+      .intro { padding: 26px 28px; background: #fff; border: 1px solid var(--linha); border-radius: 10px; margin-bottom: 20px; }
+      .intro h1 { margin: 0 0 8px; font-size: 27px; font-weight: 600; }
+      .intro { border-top: 3px solid var(--destaque); }
+      .intro p { margin: 0 0 6px; color: var(--muted); }
+      .etapas { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; padding: 0; list-style: none; }
+      .etapas li { padding: 6px 12px; border: 1px solid var(--linha); border-radius: 20px; font-size: 12px; color: var(--muted); }
+      form { background: #fff; border: 1px solid var(--linha); border-radius: 10px; padding: 28px; }
+      fieldset { border: 0; padding: 0; margin: 0 0 30px; }
+      legend { padding: 0; margin-bottom: 4px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--destaque); }
+      .ajuda { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+      .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      label { display: block; margin-bottom: 14px; font-size: 13px; font-weight: 600; }
+      label small { display: block; margin-top: 3px; font-weight: 400; color: var(--muted); }
+      input, select, textarea { width: 100%; margin-top: 6px; padding: 10px 12px; border: 1px solid var(--linha); border-radius: 6px; font-family: inherit; font-size: 14px; color: var(--navy); background: #fff; }
+      input:focus, select:focus, textarea:focus { outline: 2px solid rgba(255,45,26,.18); border-color: var(--destaque); }
+      textarea { resize: vertical; }
+      .colega { display: grid; grid-template-columns: 2fr 2fr 1.4fr 40px; gap: 10px; align-items: start; margin-bottom: 10px; }
+      .colega input { margin-top: 0; }
+      .remover { height: 40px; border: 1px solid var(--linha); border-radius: 6px; background: #fff; cursor: pointer; font-size: 16px; color: var(--muted); }
+      .adicionar { padding: 9px 14px; border: 1px solid var(--navy); border-radius: 6px; background: #fff; color: var(--navy); font-weight: 600; font-size: 13px; cursor: pointer; }
+      .consentimento { display: flex; gap: 10px; align-items: flex-start; padding: 16px; background: #f7f9fc; border: 1px solid var(--linha); border-radius: 8px; font-size: 13px; font-weight: 400; }
+      .consentimento input { width: auto; margin: 3px 0 0; }
+      .acoes { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--linha); }
+      .acoes a { color: var(--navy); font-size: 13px; }
+      button.enviar { padding: 12px 28px; border: 0; border-radius: 8px; background: linear-gradient(135deg, #ff3b22, #d81400); color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 16px rgba(255,45,26,.25); }
+      button.enviar:disabled { opacity: .6; cursor: progress; }
+      .aviso { display: none; padding: 14px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
+      .aviso.erro { display: block; background: #fdf1f1; border: 1px solid #f0c9c9; color: #8c2f2f; }
+      .aviso.sucesso { display: block; background: #eef7ef; border: 1px solid #c9e3cd; color: #26603a; }
+      footer.rodape { max-width: 940px; margin: 0 auto; padding: 0 20px 40px; color: var(--muted); font-size: 12px; }
+      @media (max-width: 720px) {
+        .grade { grid-template-columns: 1fr; }
+        .colega { grid-template-columns: 1fr; }
+        .remover { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topo">
+      <div class="conteudo">
+        <img src="./assets/logo.png" alt="InfoHub" />
+        <p>Faculdade Antonio Meneghetti</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>Envio de ideia ao InfoHub</h1>
+        <p>Este formulário corresponde à <strong>Etapa 1</strong> da jornada do empreendedor. Após o envio, sua conta de acesso é criada automaticamente e a equipe do InfoHub entrará em contato para agendar o primeiro encontro.</p>
+        <p>Não é necessário que a ideia esteja pronta: descreva o esboço como ele está hoje.</p>
+        <ol class="etapas">
+          <li>1. Envio da ideia</li>
+          <li>2. Contato com a equipe</li>
+          <li>3. Entendendo a ideia</li>
+          <li>4. Proposta de valor</li>
+          <li>5. Modelo de negócio</li>
+          <li>6. Pitch e inscrição</li>
+        </ol>
+      </section>
+
+      <div class="aviso" id="aviso" role="status"></div>
+
+      <form id="formularioInscricao" novalidate>
+        <fieldset>
+          <legend>1. Identificação do responsável</legend>
+          <p class="ajuda">Dados do aluno que está enviando a ideia e responderá pela equipe.</p>
+          <div class="grade">
+            <label>Nome completo *<input name="nome" required maxlength="150" autocomplete="name" /></label>
+            <label>E-mail *<input name="email" type="email" required maxlength="150" autocomplete="email" /><small>Será também o seu login no sistema.</small></label>
+            <label>Telefone / WhatsApp *<input name="telefone" required maxlength="30" placeholder="(55) 99999-9999" /></label>
+            <label>Senha de acesso *<input name="senha" type="password" required minlength="8" autocomplete="new-password" /><small>Mínimo de 8 caracteres.</small></label>
+            <label>Curso *<input name="curso" required maxlength="120" /></label>
+            <label>Semestre / período *<input name="semestre" required maxlength="20" placeholder="Ex.: 4º semestre" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. Equipe</legend>
+          <p class="ajuda">Informe os colegas que participam da ideia. Deixe em branco caso esteja sozinho(a).</p>
+          <div id="listaColegas"></div>
+          <button class="adicionar" type="button" id="adicionarColega">Adicionar colega</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. A ideia</legend>
+          <label>Nome da ideia / projeto *<input name="nomeProjeto" required maxlength="150" /></label>
+          <label>Descrição inicial *<textarea name="descricaoInicial" rows="6" required maxlength="4000" placeholder="Explique o problema que você percebeu e como pretende resolvê-lo. Pode ser um esboço."></textarea></label>
+          <div class="grade">
+            <label>Área / setor *<select name="areaSetor" required id="campoArea"><option value="">Carregando…</option></select></label>
+            <label>Estágio atual *<select name="estagioAtual" required id="campoEstagio"></select></label>
+          </div>
+          <label>Como conheceu o InfoHub<input name="origemDivulgacao" maxlength="100" placeholder="Ex.: indicação de professor, Instagram, evento" /><small>Campo opcional.</small></label>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Tratamento de dados</legend>
+          <label class="consentimento">
+            <input type="checkbox" name="consentimentoLgpd" required />
+            <span>Autorizo a Faculdade Antonio Meneghetti a tratar os dados informados neste formulário para fins de acompanhamento da jornada no InfoHub e eventual encaminhamento ao InovAMF, nos termos da Lei nº 13.709/2018 (LGPD). Posso solicitar a correção ou a exclusão dos meus dados a qualquer momento junto à coordenação do programa.</span>
+          </label>
+        </fieldset>
+
+        <div class="acoes">
+          <a href="./index.html">Já tenho cadastro — acessar o sistema</a>
+          <button class="enviar" type="submit">Enviar ideia</button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="rodape">InfoHub — Conectando conhecimento, tecnologia &amp; inovação. Faculdade Antonio Meneghetti.</footer>
+
+    <script defer src="./js/inscricao.js"></script>
+  </body>
+</html>

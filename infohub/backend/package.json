@@ -1,0 +1,20 @@
+{
+  "name": "infohub-backend",
+  "version": "3.1.0",
+  "description": "API + servidor do front-end estático do InfoHub",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "lembretes": "node -e \"require('dotenv').config();require('./src/services/agendador').executarCiclo().then(()=>process.exit(0))\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "sequelize": "^6.37.3",
+    "nodemailer": "^7.0.6"
+  }
+}
