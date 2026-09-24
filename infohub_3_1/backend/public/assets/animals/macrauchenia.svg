@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Macrauquênia">
+<rect width="128" height="128" rx="64" fill="#fff4ea"/>
+<g fill="none" stroke="#4A0E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M26 61c5-15 18-25 35-25 13 0 25 5 33 13 7 7 10 15 8 21-3 8-15 10-29 7-15-3-31-4-47-1Z"/><path d="M86 48c7-4 13-13 15-23 2-7 6-11 10-10 5 1 5 7 1 14l-7 13"/><path d="M45 70l-3 13M61 71l1 14M80 70l5 13M95 66l9 10"/><circle cx="106" cy="20" r="2"/></g>
+<path d="M24 91c20-7 59-7 80 0" fill="none" stroke="#E63323" stroke-width="4" stroke-linecap="round"/>
+</svg>
