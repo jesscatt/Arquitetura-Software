@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Smilodon">
+<rect width="128" height="128" rx="64" fill="#fff4ea"/>
+<g fill="none" stroke="#4A0E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M27 61c5-16 20-26 38-26 17 0 30 7 37 19 5 10 1 19-9 24-12 6-31 5-47 0-10-3-17-9-19-17Z"/><path d="M48 40c-1-11 6-19 16-22 11-3 21 2 24 11 2 8-2 15-10 19"/><path d="M83 45c8 2 15 0 20-6"/><path d="M55 59c3 5 8 7 13 7M61 39l-3 8M74 38l3 8"/><path d="M45 69l-7 12M64 72l-2 13M84 70l4 13M99 64l10 8"/><path d="M70 51c-1 5-2 9-1 13M77 51c2 5 2 9 1 13"/></g>
+<path d="M24 91c20-7 59-7 80 0" fill="none" stroke="#E63323" stroke-width="4" stroke-linecap="round"/>
+</svg>
